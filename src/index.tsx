@@ -19,7 +19,7 @@ declare let module: { hot: any }
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
   module.hot.accept('./app', () => {
-    const App = require('./app').default
+    const { App } = require('./app')
     render(App)
   })
 }
