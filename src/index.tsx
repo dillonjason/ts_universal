@@ -2,14 +2,14 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import createHistory from 'history/createBrowserHistory'
 import { AppContainer } from 'react-hot-loader'
-import { App } from './app'
+import { Root } from './root'
 
 const history = createHistory()
 
-const render = App =>
+const render = Root =>
   ReactDOM.hydrate(
     <AppContainer>
-      <App history={history} />
+      <Root history={history} />
     </AppContainer>,
     document.getElementById('root')
   )
@@ -18,10 +18,10 @@ const render = App =>
 declare let module: { hot: any }
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
-  module.hot.accept('./app', () => {
-    const { App } = require('./app')
-    render(App)
+  module.hot.accept('./root', () => {
+    const { Root } = require('./root')
+    render(Root)
   })
 }
 
-render(App)
+render(Root)

@@ -31,12 +31,15 @@ module.exports = {
         test: /\.scss$/,
         use: [
           ExtractCssChunks.loader,
+          'css-modules-typescript-loader',
           {
             loader: 'css-loader',
             options: {
-              modules: true,
-              localIdentName: '[name]__[local]--[hash:base64:5]'
+              modules: true
             }
+          },
+          {
+            loader: 'postcss-loader'
           },
           {
             loader: 'sass-loader'

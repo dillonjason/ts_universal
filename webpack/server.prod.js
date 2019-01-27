@@ -32,12 +32,16 @@ module.exports = {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: [
+          'css-modules-typescript-loader',
           {
-            loader: 'css-loader/locals',
+            loader: 'css-loader',
             options: {
               modules: true,
-              localIdentName: '[name]__[local]--[hash:base64:5]'
+              exportOnlyLocals: true
             }
+          },
+          {
+            loader: 'postcss-loader'
           },
           {
             loader: 'sass-loader'
